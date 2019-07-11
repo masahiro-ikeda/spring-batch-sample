@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springbatchsample.batch.mapper.ClientMapper">
+
+    <select id="clientSelecter" resultType="com.example.springbatchsample.batch.entity.Client">
+        SELECT
+          client_id      AS clientId,
+          client_name    AS clientName,
+          sales_staff_no AS salesStaffNo,
+          is_invalid     AS isInvalid,
+          updater_id     AS updaterId,
+          updated_at     AS updatedAt,
+          creater_id     AS createrId,
+          created_at     AS createdAt
+        FROM
+          clients
+        ORDER BY
+          created_at
+    </select>
+
+    <insert id="clientInserter" parameterType="com.example.springbatchsample.batch.entity.Client">
+        INSERT INTO clients (
+          client_id,
+          client_name,
+          sales_staff_no,
+          is_invalid,
+          updater_id,
+          updated_at,
+          creater_id,
+          created_at
+        ) VALUES (
+          #{clientId},
+          #{clientName},
+          #{salesStaffNo},
+          #{isInvalid},
+          #{updaterId},
+          #{updatedAt},
+          #{createrId},
+          #{createdAt}
+        )
+    </insert>
+</mapper>
